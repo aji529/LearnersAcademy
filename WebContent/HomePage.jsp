@@ -15,6 +15,11 @@
 </head>
 <body>
 	<div>Welcome to Learners Academy</div>
+	
+	<div class='field'>
+		<span><a href="Logout">Logout</a></span>
+	</div>
+	
 	<div class="field">
 		
 		<form action="initStudents" method="post">
@@ -39,5 +44,7 @@
 			<button type="submit" >Manage Class</button>
 		</form>
 	</div>
+	
+	
 </body>
 </html>

@@ -26,7 +26,7 @@ table.center {
 </head>
 <body>
 	<div class='field'>
-		<span> <a href="HomePage.jsp">Home</a> <a href="LogoutServlet">Logout</a></span>
+		<span> <a href="HomePage.jsp">Home</a> <a href="Logout">Logout</a></span>
 	</div>
 
 	<div class='field' style="margin: 20px" align="center">Students-List</div>

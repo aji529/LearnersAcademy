@@ -24,9 +24,16 @@ public class dbOps {
 		Connection con = getConnection();
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = con.prepareStatement("delete from class_subjects where SUB_IDS =?");
+			preparedStatement = con.prepareStatement("select assId from subjects_class where SUB_IDS =?");
 			preparedStatement.setInt(1, subId);
-			preparedStatement.executeUpdate();
+			ResultSet rs1 = preparedStatement.executeQuery();
+			
+			con = getConnection();
+			while(rs1.next()) {
+				preparedStatement = con.prepareStatement("delete from teacher_subs where SUB_CLASS_ID=?");
+				preparedStatement.setInt(1, rs1.getInt("assId"));
+				preparedStatement.execute();
+			}
 		} catch (SQLException e1) {
 			System.err.println("Could not delete class association for the subjects");
 			e1.printStackTrace();
@@ -46,12 +53,24 @@ public class dbOps {
 		PreparedStatement ps;
 		int row = 0;
 		try {
-			preparedStatement = con.prepareStatement("delete from class_subjects where SUB_IDS =? and CLASS_ID = ?");
+			preparedStatement = con.prepareStatement("select assId from subjects_class where SUB_IDS =? and CLASS_ID = ?");
+			preparedStatement.setInt(1, subId);
+			preparedStatement.setInt(2, cid);
+			ResultSet rs1 = preparedStatement.executeQuery();
+			
+			con = getConnection();
+			while(rs1.next()) {
+				preparedStatement = con.prepareStatement("delete from teacher_subs where SUB_CLASS_ID=?");
+				preparedStatement.setInt(1, rs1.getInt("assId"));
+				preparedStatement.execute();
+			}
+			
+			preparedStatement = con.prepareStatement("delete from subjects_class where SUB_IDS =? and CLASS_ID = ?");
 			preparedStatement.setInt(1, subId);
 			preparedStatement.setInt(2, cid);
 			preparedStatement.executeUpdate();
 			
-			ps = con.prepareStatement("select count(*) from class_subjects where SUB_IDS =?");
+			ps = con.prepareStatement("select count(*) from subjects_class where SUB_IDS =?");
 			ps.setInt(1, subId);
 			ResultSet rs = ps.executeQuery();
 			rs.next();

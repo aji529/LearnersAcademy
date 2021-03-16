@@ -43,7 +43,7 @@ public class SubDelServlet extends HttpServlet {
 		try {
 			subId = Integer.parseInt(s_id);
 		} catch (Exception e) {
-			out.println("Student data could not be fetched");
+			out.println("Subject data could not be fetched");
 		}
 
 		SubjectHandler handler = new SubjectHandler();

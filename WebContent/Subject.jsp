@@ -26,10 +26,10 @@ table.center {
 <body>
 
 	<div class='field'>
-		<span> <a href="HomePage.jsp">Home</a> <a href="LogoutServlet">Logout</a></span>
+		<span> <a href="HomePage.jsp">Home</a> <a href="Logout">Logout</a></span>
 	</div>
 
-	<div style="margin: 20px" align="center">Add Students to the list</div>
+	<div style="margin: 20px" align="center">Add Subjects to the list</div>
 	<form action="SubjectServlet" method="post">
 		<div align='center'>
 
